@@ -1,0 +1,12 @@
+echo "Hello World" > file1.txt
+cat file1.txt
+echo "Appending line" >> file1.txt
+cat file1.txt
+cat < file1.txt
+sort < file1.txt > sorted.txt
+cat sorted.txt
+wc -l < file1.txt
+ls -l > output.txt
+ls -l >> output.txt
+grep "Hello" < file1.txt > result.txt
+cat result.txt
