@@ -1,0 +1,19 @@
+#!/bin/bash
+# Variables
+SOURCE_DIR="/home/user/Documents"
+BACKUP_DIR="/home/user/Backup"
+DATE=$(date +%Y-%m-%d_%H-%M-%S)
+TAR_FILE="$BACKUP_DIR/backup_$DATE.tar.gz"
+REMOTE_USER="user"
+REMOTE_HOST="192.168.1.100"
+REMOTE_DIR="/remote/backup/"
+# Create backup directory if not exists
+mkdir -p "$BACKUP_DIR"
+# Create compressed backup using tar
+tar -czvf "$TAR_FILE" "$SOURCE_DIR"
+# Sync backup to remote server using rsync
+rsync -avz "$TAR_FILE" "$REMOTE_USER@$REMOTE_HOST:$REMOTE_DIR"
+# Verify backup
+ls -lh "$BACKUP_DIR"
+# Log the backup process
+echo "Backup completed at $(date)" >> "$BACKUP_DIR/backup_log.txt"
