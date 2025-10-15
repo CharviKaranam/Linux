@@ -1,0 +1,53 @@
+#!/bin/bash
+# Variable declaration
+name="Charvi"
+count=5
+
+# Display message
+echo "Hello, $name! Welcome to Shell Programming Practice."
+
+# Conditional statement
+if [ $count -gt 3 ]; then
+    echo "Count is greater than 3."
+else
+    echo "Count is less than or equal to 3."
+fi
+
+# Looping construct
+echo "Printing numbers from 1 to 5:"
+for i in {1..5}; do
+    echo "Number: $i"
+done
+
+# While loop
+num=1
+while [ $num -le 3 ]; do
+    echo "Iteration $num using while loop"
+    ((num++))
+done
+
+# Case statement
+read -p "Enter a number (1-3): " choice
+case $choice in
+    1) echo "You selected option 1." ;;
+    2) echo "You selected option 2." ;;
+    3) echo "You selected option 3." ;;
+    *) echo "Invalid option." ;;
+esac
+
+# Function definition
+greet_user() {
+    echo "Hello $1, today is $(date +%A)."
+}
+greet_user "$name"
+
+# Command substitution
+current_dir=$(pwd)
+echo "You are currently in directory: $current_dir"
+
+# Arithmetic operation
+sum=$((10 + 20))
+echo "The sum of 10 and 20 is $sum"
+
+# Logging completion
+echo "Shell programming practice completed at $(date)" >> ~/shell_practice_log.txt
