@@ -1,0 +1,35 @@
+#!/bin/bash
+
+# Create a simple C program
+cat > hello.c <<EOL
+#include <stdio.h>
+
+int main() {
+    printf("Hello, UNIX Compilation Process!\\n");
+    return 0;
+}
+EOL
+
+# Step 1: Preprocessing
+gcc -E hello.c -o hello.i
+
+# Step 2: Compilation to Assembly Code
+gcc -S hello.i -o hello.s
+
+# Step 3: Assembling to Object Code
+gcc -c hello.s -o hello.o
+
+# Step 4: Linking to Create Executable
+gcc hello.o -o hello
+
+# Run the final executable
+./hello
+
+# Display generated files
+ls -l hello.*
+
+# Clean up intermediate files
+rm hello.i hello.s hello.o
+
+# Log completion
+echo "C program compilation process under UNIX completed at $(date)" >> ~/c_compilation_log.txt
